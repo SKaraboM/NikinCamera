@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+label, input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px;
+  width: 95%;
+  max-width: 95vw; /* Adjust the width as needed */
+}
+
+.form {
+  max-width: 95vw;  /* You can adjust this */
+  margin: 0 auto;    /* Centers the form */
+  font-size: medium;
+  background-color: lightskyblue;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: #4CAF50; /* You can change the color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: medium;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #45a049; /* Slightly darker on hover */
+}
+
+.image-section {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.image-section h2 {
+  margin-bottom: 10px;
+}
+
+.image-section label {
+  margin-right: 10px;
+}
+
+.preview {
+  margin-top: 10px;
+}
+
+.preview img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group label {
+  margin-right: 20px;
+}
+
+.top-images {
+  display: flex;
+  justify-content: space-between; /* Align images to left and right */
+  align-items: center;
+  margin-bottom: 20px; /* Space below the images */
+}
+.bmwgroup {
+  width: 120px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+.logo {
+  width: 170px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.form-header {
+  text-align: center; /* Centers the text horizontally */
+  margin-bottom: 20px; /* Adds space below the header */
+  font-size: smaller;
+}
+
