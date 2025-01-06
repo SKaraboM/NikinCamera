@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import Webcam from 'react-webcam';
 
 import bmwgroup from './Images/BMW group.png';
@@ -19,6 +19,8 @@ export default function Form() {
   const [c4out, setC4out] = useState("");
   const [datein, setDatein] = useState("");
   const [c4in, setC4in] = useState("");
+  const [mode, setMode] = useState("");
+
   // States for image handling
   const [imageSrc, setImageSrc] = useState(null);
   const [imageMethod, setImageMethod] = useState("upload");
@@ -44,6 +46,16 @@ export default function Form() {
     setImageSrc(null); // Reset image when method changes
   };
 
+  useEffect(() => {
+    axios.get('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre')
+    .then(response => {
+      console.log(response.data.projects[0].Mode)
+      setMode(response.data.projects[0].Mode)
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  })
   // Handling image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -139,15 +151,8 @@ export default function Form() {
     setError(false);
   
     axios
-      .post('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre',{
-
-        UniqueID: uuidv4(),
-        Name: name,
-        QNumber: qnumber,
-        DateRequested: dateout,
-        C4PersonnelOut: c4out,
-        Mode: "request",
-      })
+      .post('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre',
+        payload)
       .then(function (response) {
         console.log("Response:", response.data);
         setSubmitted(true);
