@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { useState } from 'react';
@@ -111,6 +112,7 @@ export default function Form() {
         return;
       }
       payload = {
+        UniqueID: uuidv4(),
         Name: name,
         QNumber: qnumber,
         DateReturned: datein,
@@ -125,6 +127,7 @@ export default function Form() {
         return;
       }
       payload = {
+        UniqueID: uuidv4(),
         Name: name,
         QNumber: qnumber,
         DateRequested: dateout,
@@ -136,7 +139,15 @@ export default function Form() {
     setError(false);
   
     axios
-      .post('https://lzr988cts4.execute-api.eu-west-1.amazonaws.com/dev/', payload)
+      .post('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre',{
+
+        UniqueID: uuidv4(),
+        Name: name,
+        QNumber: qnumber,
+        DateRequested: dateout,
+        C4PersonnelOut: c4out,
+        Mode: "request",
+      })
       .then(function (response) {
         console.log("Response:", response.data);
         setSubmitted(true);
