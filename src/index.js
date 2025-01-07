@@ -19,7 +19,8 @@ export default function Form() {
   const [c4out, setC4out] = useState("");
   const [datein, setDatein] = useState("");
   const [c4in, setC4in] = useState("");
-  const [mode, setMode] = useState("");
+  const [lastRequest, setLastRequest] = useState("");
+  const [clicked, setClicked] = useState(false);
 
   // States for image handling
   const [imageSrc, setImageSrc] = useState(null);
@@ -47,15 +48,19 @@ export default function Form() {
   };
 
   useEffect(() => {
+    setClicked(false)
     axios.get('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre')
     .then(response => {
-      console.log(response.data.projects[0].Mode)
-      setMode(response.data.projects[0].Mode)
+      console.log(response.data.projects)
+      response.data.projects.sort((a, b) => a.TimeStamp?.toLowerCase() < b.TimeStamp?.toLowerCase() ? 1 : -1)
+      setLastRequest(response.data.projects[0].Name + ", " +  response.data.projects[0].QNumber)
+      setShowWebcam(response.data.projects[0].Mode === "request")
+      
     })
     .catch(error => {
       console.log(error);
     });
-  })
+  },[showWebcam])
   // Handling image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -115,7 +120,7 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    setClicked(true)
     let payload = {};
     if (showWebcam) {
       // Return Mode
@@ -131,6 +136,8 @@ export default function Form() {
         C4PersonnelIn: c4in,
         Image: imageSrc || null, //optional image
         Mode: "return",
+        TimeStamp: (new Date())
+
       };
     } else {
       // Request Mode
@@ -145,6 +152,7 @@ export default function Form() {
         DateRequested: dateout,
         C4PersonnelOut: c4out,
         Mode: "request",
+        TimeStamp: (new Date()),
       };
     }
   
@@ -175,7 +183,7 @@ export default function Form() {
         <h1>PI-64 Nikon Camera Register</h1>
       </div>
 
-      {/* Buttons to switch between Request and Return modes */}
+      {/* Buttons to switch between Request and Return modes
       <div className="button-container">
         <button className="btn" onClick={() => setShowWebcam(false)}>
           Request Camera
@@ -183,16 +191,18 @@ export default function Form() {
         <button className="btn" onClick={() => setShowWebcam(true)}>
           Return Camera
         </button>
-      </div>
+      </div> */}
 
       {/* Camera Status Message */}
       <div className="camera-status">
-        <h2>{showWebcam ? "Returning the Camera" : "Requesting the Camera"}</h2>
+        <h3>{showWebcam ? "Returning the Camera" : "Requesting the Camera"}</h3>
+        {/* <p>{showWebcam && "Last requested by " + lastRequest}</p> */}
       </div>
+        
 
       <div className="messages">
         {error && <div className="error"><h3>Please enter all the fields/provide an image</h3></div>}
-        {submitted && <div className="success"><h3>Thank you {name}, {showWebcam ? "Camera returned successfully!" : "Enjoy the camera!"}</h3></div>}
+        {submitted && <div className="success"><h3>Thank you {name}, {!showWebcam ? "Camera returned successfully!" : "Enjoy the camera!"}</h3></div>}
       </div>
 
       <form>
@@ -253,7 +263,7 @@ export default function Form() {
         )}
 
         <div className="button-container">
-          <button onClick={handleSubmit} className="btn" type="submit">Submit</button>
+          {clicked? <button className="btn" type="submit">Submit</button>:<button onClick={handleSubmit} className="btn" type="submit">Submit</button>}
         </div>
       </form>
     </div>
