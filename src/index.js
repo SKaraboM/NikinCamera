@@ -202,7 +202,7 @@ export default function Form() {
 
       <div className="messages">
         {error && <div className="error"><h3>Please enter all the fields/provide an image</h3></div>}
-        {submitted && <div className="success"><h3>Thank you {name}, {!showWebcam ? "Camera returned successfully!" : "Enjoy the camera!"}</h3></div>}
+        {submitted && <div className="success"><h3>Thank you {name}, {showWebcam ? "Camera returned successfully!" : "Enjoy the camera!"}</h3></div>}
       </div>
 
       <form>
