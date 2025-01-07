@@ -51,7 +51,6 @@ export default function Form() {
     setClicked(false)
     axios.get('https://qdllbxs2i1.execute-api.eu-west-1.amazonaws.com/dev/Nikon-Camera-resoucre')
     .then(response => {
-      console.log(response.data.projects)
       response.data.projects.sort((a, b) => a.TimeStamp?.toLowerCase() < b.TimeStamp?.toLowerCase() ? 1 : -1)
       setLastRequest(response.data.projects[0].Name + ", " +  response.data.projects[0].QNumber)
       setShowWebcam(response.data.projects[0].Mode === "request")
