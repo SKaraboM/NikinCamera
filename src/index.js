@@ -201,7 +201,7 @@ export default function Form() {
         
 
       <div className="messages">
-        {error && <div className="error"><h3>Please enter all the fields/provide an image</h3></div>}
+        {error && <div className="error"><h3>Please enter all the fields</h3></div>}
         {submitted && <div className="success"><h3>Thank you {name}, {showWebcam ? "Camera returned successfully!" : "Enjoy the camera!"}</h3></div>}
       </div>
 
@@ -263,7 +263,7 @@ export default function Form() {
         )}
 
         <div className="button-container">
-          {clicked? <button className="btn" type="submit">Submit</button>:<button onClick={handleSubmit} className="btn" type="submit">Submit</button>}
+          {clicked? <button className="btn" style={{curser: 'wait'}} type="submit">Submit</button>:<button onClick={handleSubmit} className="btn" type="submit">Submit</button>}
         </div>
       </form>
     </div>
