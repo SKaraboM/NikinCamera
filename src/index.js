@@ -182,6 +182,10 @@ export default function Form() {
         <h1>PI-64 Nikon Camera Register</h1>
       </div>
 
+      <div className="last-request">
+        <h3>Last User: {lastRequest || "Loading..."}</h3>
+      </div>
+
       {/* Buttons to switch between Request and Return modes
       <div className="button-container">
         <button className="btn" onClick={() => setShowWebcam(false)}>
