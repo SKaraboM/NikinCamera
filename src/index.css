@@ -10,32 +10,31 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 label, input {
   display: block;
-  margin: 10px;
-  font-size: 20px;
+  margin: auto;
+  font-size: 5vw;
   color:white
 }
 
 input {
-  padding: 10px;
-  width: 100%;
+  padding: 2vw;
+  width: 90%;
   height: 2vh;
   max-width: 95vw; /* Adjust the width as needed */
   margin: auto; 
   border-radius: 10px;/* Adjust the width as needed */
-  font-size: 18px;
+  font-size: 4vw;
   color: black;
 
 }
 
 .form {
-  max-width: 50vw;
-  min-height: 100vh;  /* You can adjust this */
+  width: 90%;
+  min-height: 90vh;  /* You can adjust this */
   margin: 10px auto;  
   padding: 10px;  /* Centers the form */
   font-size: medium;
@@ -45,21 +44,21 @@ input {
 .button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 5vw;
 }
 
 .btn {
-  padding: 10px 15px;
+  padding: 3vw 5vw;
   background-color: #4CAF50; /* You can change the color */
   color: white;
   border: none;
-  font-size: medium;
+  font-size: 4vw;
   cursor: pointer;
   margin-bottom: 10px;
   margin-top: 20px;
   margin-right: -20px;
   border-radius: 10px;
-  width: 10vw;
+  width: 30%;
 }
 
 .btn:hover {
@@ -68,16 +67,18 @@ input {
 
 .image-section {
   margin-top: 20px;
-  padding: 10px;
+  padding: 2vw;
   border: 1px solid #fff;
 }
 
 .image-section h2 {
   margin-bottom: 10px;
+  font-size: 6vw;
 }
 
 .image-section label {
   margin-right: 10px;
+  font-size: 4vw;
 }
 
 .preview {
@@ -88,15 +89,19 @@ input {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
+  max-width: 100%;
+  height: auto;
 }
 
 .radio-group {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .radio-group label {
   margin-right: 20px;
+  font-size: 4vw;
 }
 
 .top-images {
@@ -112,7 +117,8 @@ input {
   margin-bottom: 5px /* Maintain aspect ratio */
 }
 .logo {
-  width: 150px; /* Adjust the width as needed */
+  width: 20%; /* Adjust the width as needed */
+  max-width: 150px;
   height: auto;
   margin: 10px /* Maintain aspect ratio */;
   margin-bottom: 5px /* Maintain aspect ratio */

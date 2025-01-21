@@ -185,7 +185,7 @@ export default function Form() {
       {/* Conditionally render the last request details only in Return Mode */}
       {showWebcam && (
         <div className="last-request">
-          <h3>Current User: {lastRequest || "Loading..."}</h3>
+          <h3>Last Request by: {lastRequest || "Loading..."}</h3>
         </div>
       )}
 
