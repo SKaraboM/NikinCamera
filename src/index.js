@@ -218,7 +218,7 @@ export default function Form() {
         </div>
 
         <div>
-          <label className="label">Q number:</label>
+          <label className="label">Company ID no:</label>
           <input onChange={handleQnumber} className="input" value={qnumber} type="text" />
         </div>
 
